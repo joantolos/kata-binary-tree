@@ -6,11 +6,12 @@ import java.util.List;
 
 public class Printer {
 
-    public <T extends Comparable<?>> void printNode(TreeNode root) {
+    public void printNode(String name, TreeNode root) {
+        System.out.println(name + ":");
         printNodeInternal(Collections.singletonList(root), 1, this.maxLevel(root));
     }
 
-    private <T extends Comparable<?>> void printNodeInternal(List<TreeNode> treeNodes, int level, int maxLevel) {
+    private void printNodeInternal(List<TreeNode> treeNodes, int level, int maxLevel) {
         if (treeNodes.isEmpty() || this.areAllElementsNull(treeNodes)) {
             return;
         }

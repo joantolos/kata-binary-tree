@@ -2,8 +2,7 @@ package com.joantolos.kata.binary.tree;
 
 public class TreeNode {
     int val;
-    TreeNode left;
-    TreeNode right;
+    TreeNode left, right;
 
     TreeNode() {
     }

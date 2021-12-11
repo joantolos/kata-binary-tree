@@ -8,12 +8,12 @@ public class PrinterTest extends TreeExamples {
 
     @Test
     public void shouldPrintTreeOne() {
-        this.printer.printNode(treeOne());
+        this.printer.printNode("Example One", treeOne());
     }
 
     @Test
     public void shouldPrintTreeTwo() {
-        this.printer.printNode(treeTwo());
+        this.printer.printNode("Example Two", treeTwo());
     }
 }
 

@@ -1,6 +1,6 @@
 package com.joantolos.kata.binary.tree;
 
-public class Node<T extends Comparable<?>> {
+public class Node<T> {
     Node<T> left, right;
     T data;
 
