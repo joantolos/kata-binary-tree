@@ -6,13 +6,14 @@ import java.util.List;
 
 public class Printer {
 
-    public <T extends Comparable<?>> void printNode(Node<T> root) {
+    public <T extends Comparable<?>> void printNode(TreeNode root) {
         printNodeInternal(Collections.singletonList(root), 1, this.maxLevel(root));
     }
 
-    private <T extends Comparable<?>> void printNodeInternal(List<Node<T>> nodes, int level, int maxLevel) {
-        if (nodes.isEmpty() || this.areAllElementsNull(nodes))
+    private <T extends Comparable<?>> void printNodeInternal(List<TreeNode> treeNodes, int level, int maxLevel) {
+        if (treeNodes.isEmpty() || this.areAllElementsNull(treeNodes)) {
             return;
+        }
 
         int floor = maxLevel - level;
         int edgeLines = (int) Math.pow(2, (Math.max(floor - 1, 0)));
@@ -21,15 +22,15 @@ public class Printer {
 
         this.printWhitespaces(firstSpaces);
 
-        List<Node<T>> newNodes = new ArrayList<>();
-        for (Node<T> node : nodes) {
-            if (node != null) {
-                System.out.print(node.data);
-                newNodes.add(node.left);
-                newNodes.add(node.right);
+        List<TreeNode> newTreeNodes = new ArrayList<>();
+        for (TreeNode treeNode : treeNodes) {
+            if (treeNode != null) {
+                System.out.print(treeNode.val);
+                newTreeNodes.add(treeNode.left);
+                newTreeNodes.add(treeNode.right);
             } else {
-                newNodes.add(null);
-                newNodes.add(null);
+                newTreeNodes.add(null);
+                newTreeNodes.add(null);
                 System.out.print(" ");
             }
 
@@ -38,14 +39,14 @@ public class Printer {
         System.out.println("");
 
         for (int i = 1; i <= edgeLines; i++) {
-            for (Node<T> node : nodes) {
+            for (TreeNode treeNode : treeNodes) {
                 this.printWhitespaces(firstSpaces - i);
-                if (node == null) {
+                if (treeNode == null) {
                     this.printWhitespaces(edgeLines + edgeLines + i + 1);
                     continue;   // TODO ugly
                 }
 
-                if (node.left != null) {
+                if (treeNode.left != null) {
                     System.out.print("/");
                 }
                 else {
@@ -54,7 +55,7 @@ public class Printer {
 
                 this.printWhitespaces(i + i - 1);
 
-                if (node.right != null) {
+                if (treeNode.right != null) {
                     System.out.print("\\");
                 } else {
                     this.printWhitespaces(1);
@@ -66,7 +67,7 @@ public class Printer {
             System.out.println("");
         }
 
-        printNodeInternal(newNodes, level + 1, maxLevel);
+        printNodeInternal(newTreeNodes, level + 1, maxLevel);
     }
 
     private void printWhitespaces(int count) {
@@ -75,12 +76,12 @@ public class Printer {
         }
     }
 
-    private <T extends Comparable<?>> int maxLevel(Node<T> node) {
-        if (node == null) {
+    private <T extends Comparable<?>> int maxLevel(TreeNode treeNode) {
+        if (treeNode == null) {
             return 0;
         }
 
-        return Math.max(this.maxLevel(node.left), this.maxLevel(node.right)) + 1;
+        return Math.max(this.maxLevel(treeNode.left), this.maxLevel(treeNode.right)) + 1;
     }
 
     private <T> boolean areAllElementsNull(List<T> list) {
