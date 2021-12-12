@@ -15,5 +15,15 @@ public class PrinterTest extends TreeExamples {
     public void shouldPrintTreeTwo() {
         this.printer.printNode("Example Two", treeTwo());
     }
+
+    @Test
+    public void shouldPrintTreeThree() {
+        this.printer.printNode("Example Three", treeThree());
+    }
+
+    @Test
+    public void shouldPrintTreeFour() {
+        this.printer.printNode("Example Four", treeFour());
+    }
 }
 
