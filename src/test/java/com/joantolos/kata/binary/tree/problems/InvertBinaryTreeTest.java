@@ -15,7 +15,7 @@ public class InvertBinaryTreeTest extends TreeExamples {
     public void shouldInvertBinaryTree() {
         TreeNode tree = treeOne();
         treePrinter.printNode("Tree", tree);
-        treePrinter.printNode("Expected tree", expectedInvertedTreeOne());
+//        treePrinter.printNode("Expected tree", expectedInvertedTreeOne());
         TreeNode actualTree = invertBinaryTree.invertTree(tree);
         treePrinter.printNode("Inverted tree", actualTree);
         Assert.assertEquals(expectedInvertedTreeOne(), actualTree);
